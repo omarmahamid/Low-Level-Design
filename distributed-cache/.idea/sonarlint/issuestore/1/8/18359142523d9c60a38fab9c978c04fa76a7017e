@@ -1,0 +1,25 @@
+
+
+java:S1319="€The type of "expiryQueue" should be an interface such as "ConcurrentMap" rather than the implementation "ConcurrentSkipListMap".(„ο¥…8ϋθ¥πώ0
+¥
+java:S1319?"‚The type of "priorityQueue" should be an interface such as "ConcurrentMap" rather than the implementation "ConcurrentSkipListMap".(Φ€¥όÿÿÿÿ8ϋθ¥πώ0
+n	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„µ¶ό8όθ¥πώ0
+s	java:S117Έ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–­ªόÿÿÿÿ8όθ¥πώ0
+6
+java:S1700"Rename field "cache"(¤µÿÿÿÿÿ8ύθ¥πώ0
+]	java:S107"AConstructor has 8 parameters, which is greater than 7 authorized.(―Ξ™8Ίι¥πώ0
+^	java:S1077"BConstructor has 10 parameters, which is greater than 7 authorized.(―Ξ™8Ίι¥πώ0
+e	java:S119"IRename this generic name to match the regular expression '^[A-Z][0-9]?$'.(®«όΎ8Ίι¥πώ0
+e	java:S119"IRename this generic name to match the regular expression '^[A-Z][0-9]?$'.(®«όΎ8Ίι¥πώ0
+W
+java:S6213g":Rename this variable to not match a restricted identifier.(™ϊΉύ8Βι¥πώ0
+\
+java:S6213r":Rename this variable to not match a restricted identifier.(»ª»ψÿÿÿÿ8Δι¥πώ0
+X
+java:S6213":Rename this variable to not match a restricted identifier.(„µ¶ό8Ζι¥πώ0
+]
+java:S6213“":Rename this variable to not match a restricted identifier.(Κϋÿÿÿÿ8Ηι¥πώ0
+X
+java:S6213¶":Rename this variable to not match a restricted identifier.(®ϋΡ³8Κι¥πώ0
+]
+java:S6213»":Rename this variable to not match a restricted identifier.(”τ²ΐϊÿÿÿÿ8Λι¥πώ0

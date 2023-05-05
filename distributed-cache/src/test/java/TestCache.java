@@ -16,12 +16,13 @@ import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
 public class TestCache {
 
     private static final String PROFILE_MUMBAI_ENGINEER = "profile_mumbai_engineer", PROFILE_HYDERABAD_ENGINEER = "profile_hyderabad_engineer";
+
+    // dataMap illustrate as out DB (key,value db in memory :))
     private final Map<String, String> dataMap = new ConcurrentHashMap<>();
     private final Queue<CompletableFuture<Void>> writeOperations = new LinkedList<>();
     private DataSource<String, String> dataSource;
@@ -284,17 +285,19 @@ public class TestCache {
     }
 
     @Test
-    public void RaceConditions() throws ExecutionException, InterruptedException {
+    public void RaceConditions() {
+
         final Cache<String, String> cache = new CacheBuilder<String, String>()
                 .poolSize(8)
                 .dataSource(dataSource)
                 .build();
 
-        final Map<String, List<String>> cacheEntries = new HashMap<String, List<String>>();
+        final Map<String, List<String>> cacheEntries = new HashMap<>();
         final int numberOfEntries = 100;
         final int numberOfValues = 1000;
         final String[] keyList = new String[numberOfEntries];
         final Map<String, Integer> inverseMapping = new HashMap<>();
+
         for (int entry = 0; entry < numberOfEntries; entry++) {
             final String key = UUID.randomUUID().toString();
             keyList[entry] = key;
@@ -307,10 +310,12 @@ public class TestCache {
                 cacheEntries.get(key).add(UUID.randomUUID().toString());
             }
         }
+
         final Random random = new Random();
         final List<CompletionStage<String>> futures = new ArrayList<>();
         final List<String> queries = new ArrayList<>();
         final int[] updates = new int[numberOfEntries];
+
         for (int i = 0; i < 1000000; i++) {
             final int index = random.nextInt(numberOfEntries);
             final String key = keyList[index];
@@ -324,13 +329,19 @@ public class TestCache {
                 futures.add(cache.get(key));
             }
         }
-        final CompletionStage<List<String>> results = CompletableFuture.allOf(futures.toArray(new CompletableFuture[futures.size()]))
-                .thenApply(__ -> futures.stream()
+
+        final CompletionStage<List<String>> results = CompletableFuture
+                .allOf(futures.toArray(new CompletableFuture[futures.size()]))
+                .thenApply(__ -> futures
+                        .stream()
                         .map(CompletionStage::toCompletableFuture)
                         .map(CompletableFuture::join)
                         .collect(Collectors.toList()));
+
         final int[] currentIndexes = new int[numberOfEntries];
+
         final StringBuilder stringBuilder = new StringBuilder();
+
         results.thenAccept(values -> {
             for (int i = 0; i < values.size(); i++) {
                 final String key = queries.get(i);

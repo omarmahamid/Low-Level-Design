@@ -1,0 +1,15 @@
+
+]
+java:S1612"@Replace this lambda with method reference 'Main::computeResult'.(Ğöª‹8ÅïÉïş0
+]
+java:S1612	"@Replace this lambda with method reference 'Main::processResult'.(šõşã8ÆïÉïş0
+b
+java:S1612
+"@Replace this lambda with method reference 'System.out::println'.(ñ£…œøÿÿÿÿ8ÆïÉïş0
+Z	java:S106
+"9Replace this use of System.out or System.err by a logger.(ñ£…œøÿÿÿÿ8ÇïÉïş0
+U	java:S106"9Replace this use of System.out or System.err by a logger.(Ä¹õæ8ÇïÉïş0
+{
+java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8ÇïÉïş0
+{
+java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8ÈïÉïş0

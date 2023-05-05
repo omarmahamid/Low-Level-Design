@@ -37,10 +37,11 @@ public class Cache<KEY, VALUE> {
                     final int accessTimeDifference = (int) (first.getLastAccessTime() - second.getLastAccessTime());
                     if (evictionAlgorithm.equals(EvictionAlgorithm.LRU)) {
                         return accessTimeDifference;
-                    } else {
+                    } else if (evictionAlgorithm.equals(EvictionAlgorithm.LFU)) {
                         final int accessCountDifference = first.getAccessCount() - second.getAccessCount();
                         return accessCountDifference != 0 ? accessCountDifference : accessTimeDifference;
                     }
+                    return accessTimeDifference;
                 }),
                 timer);
 
